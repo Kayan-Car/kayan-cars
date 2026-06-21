@@ -234,7 +234,7 @@
         }
 
         .vehicle-img {
-            height: 200px;
+            height: 230px;
             background-size: cover;
             background-position: center;
         }
@@ -257,6 +257,23 @@
         .vehicle-info h4 {
             font-size: 20px;
             margin-bottom: 10px;
+        }
+
+        .vehicle-info .specs-list {
+            list-style: none;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .vehicle-info .specs-list li {
+            margin-bottom: 4px;
+        }
+
+        .vehicle-info .specs-list li i {
+            color: var(--accent-color);
+            margin-left: 6px;
+            width: 18px;
         }
 
         .vehicle-meta {
@@ -389,7 +406,7 @@
 
         /* التوافق مع الشاشات الصغيرة */
         @media (max-width: 768px) {
-            nav { display: none; } /* يمكن إضافة قائمة برجر برمجياً لاحقاً */
+            nav { display: none; }
             .hero h1 { font-size: 32px; }
             .hero p { font-size: 16px; }
             .contact-container { grid-template-columns: 1fr; }
@@ -401,7 +418,7 @@
     <!-- القائمة العلوية -->
     <header>
         <div class="logo">
-            <i class="fa-solid solid fa-car-side"></i>
+            <i class="fa-solid fa-truck-monster"></i>
             <span>كيان</span>
         </div>
         <nav>
@@ -420,7 +437,7 @@
         <h1>مرحباً بكم في <span>موقع كيان</span></h1>
         <p>وجهتكم الأولى والأكثر ثقة لبيع وتأجير أحدث السيارات والشاحنات بمختلف الأحجام وبأسعار تنافسية تلبي تطلعاتكم.</p>
         <div class="cta-buttons">
-            <a href="#fleet" class="btn-main">تصفح السيارات والشاحنات</a>
+            <a href="#fleet" class="btn-main">تصفح الشاحنات والسيارات</a>
             <a href="#contact" class="btn-sub">احجز موعداً</a>
         </div>
     </section>
@@ -430,75 +447,97 @@
         <h2 class="section-title">خدماتنا المميزة</h2>
         <div class="services-grid">
             <div class="service-card">
-                <i class="fa-solid fa-car"></i>
-                <h3>تأجير السيارات</h3>
-                <p>نوفر باقة متنوعة من السيارات الاقتصادية، العائلية، والفاخرة للإيجار اليومي، الأسبوعي، أو الشهري.</p>
-            </div>
-            <div class="service-card">
                 <i class="fa-solid fa-truck-moving"></i>
                 <h3>بيع وتأجير الشاحنات</h3>
-                <p>أسطول متكامل من شاحنات النقل الثقيل والمتوسط المجهزة بأعلى معايير الأمان لخدمة قطاع الأعمال والأفراد.</p>
+                <p>أسطول متكامل من شاحنات النقل الثقيل والمقاولات المجهزة بأعلى معايير الأمان لخدمة قطاع الأعمال والأفراد.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-car"></i>
+                <h3>تأجير واستيراد السيارات</h3>
+                <p>نوفر باقة متنوعة من السيارات الاقتصادية والعائلية والفاخرة للبيع المباشر أو الإيجار المرن.</p>
             </div>
             <div class="service-card">
                 <i class="fa-solid fa-handshake"></i>
-                <h3>البيع المباشر</h3>
-                <p>نقدم خيارات مرنة وموثوقة لبيع السيارات والشاحنات الجديدة والمستعملة بحالة ممتازة وفحص شامل.</p>
+                <h3>فحص وجاهزية تامة</h3>
+                <p>نضمن تقديم آليات خاضعة للفحص الشامل وجاهزة للعمل الفوري مع توفير خدمات ما بعد البيع المميزة.</p>
             </div>
         </div>
     </section>
 
-    <!-- قسم الأسطول (أمثلة للسيارات والمعارض) -->
+    <!-- قسم الأسطول المحدث بناء على طلبك والصور المرفقة -->
     <section class="fleet" id="fleet">
-        <h2 class="section-title">من أسطولنا المتاح</h2>
+        <h2 class="section-title">من أسطولنا المتاح حالياً</h2>
         <div class="fleet-grid">
-            <!-- سيارة 1 -->
+            
+            <!-- شاحنة 1: شاحنة هوو 2026 (مستوحاة من الصورة الأولى 1000053624.jpg) -->
             <div class="vehicle-card">
-                <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="vehicle-info">
-                    <span class="vehicle-tag">تأجير / بيع</span>
-                    <h4>سيارة سيدان فاخرة - موديل حديث</h4>
+                    <span class="vehicle-tag" style="background-color: #dc2626; color: #fff;">للبيع المباشر</span>
+                    <h4>شاحنة هوو (SINOTRUK HOWO 2026)</h4>
+                    <ul class="specs-list">
+                        <li><i class="fa-solid fa-calendar-days"></i> موديل حديث 2026</li>
+                        <li><i class="fa-solid fa-gears"></i> ناقل حركة (قير): أوتوماتيك</li>
+                        <li><i class="fa-solid fa-truck"></i> نظام الدفع: 4x2</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> ضمان معتمد لمدة 3 سنوات</li>
+                    </ul>
                     <div class="vehicle-meta">
-                        <span><i class="fa-solid fa-gas-pump"></i> اقتصادية</span>
-                        <span><i class="fa-solid fa-gear"></i> أوتوماتيك</span>
+                        <span><i class="fa-solid fa-gas-pump"></i> اقتصادية في الوقود</span>
+                        <span><i class="fa-solid fa-gauge-high"></i> أداء قوي وتحمل عالي</span>
                     </div>
                 </div>
             </div>
-            <!-- شاحنة 2 -->
+
+            <!-- شاحنة 2: شاحنة صهريج / وايت نقل سوائل (مستوحاة من الصورة الثانية 1000053623.jpg) -->
             <div class="vehicle-card">
                 <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="vehicle-info">
-                    <span class="vehicle-tag">بيع وتأجير طويل المدى</span>
-                    <h4>شاحنة نقل ثقيل (مجهزة بالكامل)</h4>
+                    <span class="vehicle-tag">بيع أو تأجير</span>
+                    <h4>شاحنة نقل سوائل وصهاريج (وايت)</h4>
+                    <ul class="specs-list">
+                        <li><i class="fa-solid fa-circle-check"></i> جاهزية تامة للعمل الميداني الفوري</li>
+                        <li><i class="fa-solid fa-wrench"></i> خاضعة لفحص فني شامل ودوري</li>
+                        <li><i class="fa-solid fa-water"></i> مناسبة لنقل المياه أو المشتقات النفطية</li>
+                        <li><i class="fa-solid fa-shield"></i> مجهزة بكامل اشتراطات السلامة والأمان</li>
+                    </ul>
                     <div class="vehicle-meta">
-                        <span><i class="fa-solid fa-weight-hanging"></i> حمولة عالية</span>
-                        <span><i class="fa-solid fa-wrench"></i> فحص دوري</span>
+                        <span><i class="fa-solid fa-weight-hanging"></i> سعة خزان كبيرة</span>
+                        <span><i class="fa-solid fa-road"></i> هيكل متين للمهام الشاقة</span>
                     </div>
                 </div>
             </div>
-            <!-- سيارة 3 -->
+
+            <!-- شاحنة 3: أسطول شاحنات قلاب (مستوحاة من الصورة الثالثة 1000053622.jpg) -->
             <div class="vehicle-card">
-                <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1516573357127-6df1da33ee82?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="vehicle-info">
-                    <span class="vehicle-tag">تأجير يومي / شهري</span>
-                    <h4>سيارة دفع رباعي عائلية</h4>
+                    <span class="vehicle-tag">تأجير طويل المدى وعقود شركات</span>
+                    <h4>أسطول شاحنات قلاب للمقاولات والمهام الشاقة</h4>
+                    <ul class="specs-list">
+                        <li><i class="fa-solid fa-layer-group"></i> متوفرة بمختلف الألوان والموديلات والشركات</li>
+                        <li><i class="fa-solid fa-briefcase"></i> مخصصة لقطاع الإنشاءات والمقاولات ونقل التربة</li>
+                        <li><i class="fa-solid fa-gears"></i> قوة عزم جبارة مخصصة للطرق الوعرة</li>
+                        <li><i class="fa-solid fa-headset"></i> خدمات دعم فني وصيانة مابعد البيع</li>
+                    </ul>
                     <div class="vehicle-meta">
-                        <span><i class="fa-solid fa-users"></i> 7 ركاب</span>
-                        <span><i class="fa-solid fa-road"></i> ملائمة للمهام الصعبة</span>
+                        <span><i class="fa-solid fa-truck-ramp-box"></i> حمولات ثقيلة</span>
+                        <span><i class="fa-solid fa-star"></i> أداء معتمد وموثوق</span>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!-- قسم الاتصال -->
     <section class="contact" id="contact">
-        <h2 class="section-title">تواصل معنا الآن</h2>
+        <h2 class="section-title">تواصل معنا الآن للطلب والاستفسار</h2>
         <div class="contact-container">
             
-            <!-- معلومات الاتصال المثبتة بناءً على طلبك -->
+            <!-- معلومات الاتصال -->
             <div class="contact-info">
-                <h3>معلومات التواصل</h3>
-                <p style="margin-bottom: 20px;">نحن هنا لخدمتك والإجابة على كافة استفساراتك على مدار الساعة.</p>
+                <h3>معلومات التواصل الرسمي</h3>
+                <p style="margin-bottom: 20px;">نحن هنا لخدمتك والإجابة على كافة طلبات الحجز والبيع على مدار الساعة.</p>
                 
                 <div class="info-item">
                     <i class="fa-solid fa-phone"></i>
@@ -519,7 +558,7 @@
                 <div class="info-item">
                     <i class="fa-solid fa-location-dot"></i>
                     <div>
-                        <p style="font-size: 14px; color: #94a3b8;">الموقع الرئيسي</p>
+                        <p style="font-size: 14px; color: #94a3b8;">الموقع</p>
                         <p style="font-weight: 600;">الفرع الرئيسي</p>
                     </div>
                 </div>
@@ -527,7 +566,7 @@
 
             <!-- نموذج إرسال رسالة سريع -->
             <div class="contact-form">
-                <form onsubmit="alert('تم استلام رسالتك بنجاح! سنتواصل معك قريباً.'); return false;">
+                <form onsubmit="alert('تم استلام طلبك بنجاح! سنتواصل معك في أقرب وقت لتأكيد التفاصيل.'); return false;">
                     <div class="form-group">
                         <input type="text" placeholder="اسمك الكريم" required>
                     </div>
@@ -535,7 +574,7 @@
                         <input type="tel" placeholder="رقم الهاتف" required>
                     </div>
                     <div class="form-group">
-                        <textarea rows="5" placeholder="اكتب نوع السيارة أو الشاحنة التي تريد بيعها أو استئجارها..." required></textarea>
+                        <textarea rows="5" placeholder="اكتب مواصفات الشاحنة أو السيارة التي ترغب في شرائها أو استئجارها..." required></textarea>
                     </div>
                     <button type="submit" class="btn-submit">إرسال الطلب</button>
                 </form>
