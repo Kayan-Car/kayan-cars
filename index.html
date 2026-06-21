@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كيان لبيع وتأجير السيارات والشاحنات</title>
+    <!-- استدعاء خط Cairo من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- استدعاء أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* إعدادات التصميم العامة */
+        :root {
+            --primary-color: #1e293b; /* كحلي غامق فخم */
+            --accent-color: #f59e0b;  /* برتقالي ذهبي للسيارات والشاحنات */
+            --text-color: #334155;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* القائمة العلوية (Header) */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-contact-nav {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+
+        .btn-contact-nav:hover {
+            transform: scale(1.05);
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.85)), url('https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-main {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-sub {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .btn-sub:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* قسم الخدمات (Services) */
+        .services {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: -10px;
+            left: 25px;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 45px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* قسم الأسطول (Fleet) */
+        .fleet {
+            background-color: var(--white);
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .vehicle-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: right;
+        }
+
+        .vehicle-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .vehicle-info {
+            padding: 20px;
+        }
+
+        .vehicle-tag {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            padding: 3px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .vehicle-info h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .vehicle-meta {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .vehicle-meta span i {
+            color: var(--accent-color);
+            margin-left: 5px;
+        }
+
+        /* قسم الاتصال (Contact) */
+        .contact {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            text-align: right;
+            margin-top: 30px;
+        }
+
+        .contact-info {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .info-item i {
+            font-size: 24px;
+            color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* التذييل (Footer) */
+        footer {
+            background-color: var(--primary-color);
+            color: #94a3b8;
+            padding: 30px 5%;
+            text-align: center;
+            border-top: 1px solid #334155;
+            font-size: 14px;
+        }
+
+        footer span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* حركات الأنيميشن */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* التوافق مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            nav { display: none; } /* يمكن إضافة قائمة برجر برمجياً لاحقاً */
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- القائمة العلوية -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid solid fa-car-side"></i>
+            <span>كيان</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#fleet">أسطولنا</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        <a href="tel:780803086" class="btn-contact-nav"><i class="fa-solid fa-phone"></i> اتصل الآن</a>
+    </header>
+
+    <!-- القسم الرئيسي للترحيب -->
+    <section class="hero" id="home">
+        <h1>مرحباً بكم في <span>موقع كيان</span></h1>
+        <p>وجهتكم الأولى والأكثر ثقة لبيع وتأجير أحدث السيارات والشاحنات بمختلف الأحجام وبأسعار تنافسية تلبي تطلعاتكم.</p>
+        <div class="cta-buttons">
+            <a href="#fleet" class="btn-main">تصفح السيارات والشاحنات</a>
+            <a href="#contact" class="btn-sub">احجز موعداً</a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services" id="services">
+        <h2 class="section-title">خدماتنا المميزة</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-car"></i>
+                <h3>تأجير السيارات</h3>
+                <p>نوفر باقة متنوعة من السيارات الاقتصادية، العائلية، والفاخرة للإيجار اليومي، الأسبوعي، أو الشهري.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-truck-moving"></i>
+                <h3>بيع وتأجير الشاحنات</h3>
+                <p>أسطول متكامل من شاحنات النقل الثقيل والمتوسط المجهزة بأعلى معايير الأمان لخدمة قطاع الأعمال والأفراد.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-handshake"></i>
+                <h3>البيع المباشر</h3>
+                <p>نقدم خيارات مرنة وموثوقة لبيع السيارات والشاحنات الجديدة والمستعملة بحالة ممتازة وفحص شامل.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأسطول (أمثلة للسيارات والمعارض) -->
+    <section class="fleet" id="fleet">
+        <h2 class="section-title">من أسطولنا المتاح</h2>
+        <div class="fleet-grid">
+            <!-- سيارة 1 -->
+            <div class="vehicle-card">
+                <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <span class="vehicle-tag">تأجير / بيع</span>
+                    <h4>سيارة سيدان فاخرة - موديل حديث</h4>
+                    <div class="vehicle-meta">
+                        <span><i class="fa-solid fa-gas-pump"></i> اقتصادية</span>
+                        <span><i class="fa-solid fa-gear"></i> أوتوماتيك</span>
+                    </div>
+                </div>
+            </div>
+            <!-- شاحنة 2 -->
+            <div class="vehicle-card">
+                <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <span class="vehicle-tag">بيع وتأجير طويل المدى</span>
+                    <h4>شاحنة نقل ثقيل (مجهزة بالكامل)</h4>
+                    <div class="vehicle-meta">
+                        <span><i class="fa-solid fa-weight-hanging"></i> حمولة عالية</span>
+                        <span><i class="fa-solid fa-wrench"></i> فحص دوري</span>
+                    </div>
+                </div>
+            </div>
+            <!-- سيارة 3 -->
+            <div class="vehicle-card">
+                <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <span class="vehicle-tag">تأجير يومي / شهري</span>
+                    <h4>سيارة دفع رباعي عائلية</h4>
+                    <div class="vehicle-meta">
+                        <span><i class="fa-solid fa-users"></i> 7 ركاب</span>
+                        <span><i class="fa-solid fa-road"></i> ملائمة للمهام الصعبة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">تواصل معنا الآن</h2>
+        <div class="contact-container">
+            
+            <!-- معلومات الاتصال المثبتة بناءً على طلبك -->
+            <div class="contact-info">
+                <h3>معلومات التواصل</h3>
+                <p style="margin-bottom: 20px;">نحن هنا لخدمتك والإجابة على كافة استفساراتك على مدار الساعة.</p>
+                
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <p style="font-size: 14px; color: #94a3b8;">رقم الهاتف الجوال</p>
+                        <a href="tel:780803086" style="font-weight: 700;">780803086</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <p style="font-size: 14px; color: #94a3b8;">البريد الإلكتروني</p>
+                        <a href="mailto:osamhalqady363@gmail.com" style="font-size: 16px;">osamhalqady363@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <p style="font-size: 14px; color: #94a3b8;">الموقع الرئيسي</p>
+                        <p style="font-weight: 600;">الفرع الرئيسي</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نموذج إرسال رسالة سريع -->
+            <div class="contact-form">
+                <form onsubmit="alert('تم استلام رسالتك بنجاح! سنتواصل معك قريباً.'); return false;">
+                    <div class="form-group">
+                        <input type="text" placeholder="اسمك الكريم" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="رقم الهاتف" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="اكتب نوع السيارة أو الشاحنة التي تريد بيعها أو استئجارها..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">إرسال الطلب</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة لـ <span>موقع كيان</span> لبيع وتأجير السيارات والشاحنات.</p>
+    </footer>
+
+</body>
+</html>
+
